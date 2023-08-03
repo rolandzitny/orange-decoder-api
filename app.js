@@ -1,6 +1,9 @@
+// Express -> minimal web application framework for REST API
 const express = require('express');
+// Body-parser -> parser of request body
 const body_parser = require('body-parser');
 
+// Examples of payload for testing based on doc and external sensory types.
 const t1 = "cbb409c401990109857fff";
 const t2 = "cbb2094e01a70109927fff";
 const t3 = "cbe00b1c01a3010a2e7fff";
@@ -16,6 +19,7 @@ const exX = "cdb409f401C90c64CBB7F7";
 const app = express();
 app.use(body_parser.json());
 
+// Battery status mapping
 const batStatusMap = {
     "00": "UltraLow",
     "01": "Low",
@@ -23,16 +27,24 @@ const batStatusMap = {
     "11": "Good",
 };
 
+// Pin level mapping
 const pinLevelMap = {
     "00": "Low",
     "01": "High",
 };
 
+// Interrupt upling mapping
 const interrupUplinkMap = {
     "00": "False",
     "01": "True",
 };
 
+/** 
+ * Hexstring payloadd decoder.
+ * 
+ * @param {string} hexstring The string of hexadecimal bytes.
+ * @return {string} json_string of decoded payload. 
+ */
 function decode(hexstring){
     // Battery - 2 hex bytes
     // 15-14 is status and 13-0 is voltage
@@ -170,6 +182,7 @@ app.post('/decode', (req, res) => {
     }
 });
 
+// Docker file exports port 3000
 const port = 3000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
