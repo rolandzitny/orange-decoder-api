@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hexstring Decoder API</title>
+</head>
+<body>
+    <h1>Hexstring Decoder - REST API</h1>
+    <p>To use this API, send a POST request with the hexstring as the payload.</p>
+    <h2>Example Using PowerShell (Windows):</h2>
+    <code>
+        Invoke-RestMethod -Uri "http://34.147.166.143:3000/decode/" -Method Post -Headers @{"Content-Type" = "application/json"} -Body '{"hexstring": "cbb2094e01a70109927fff"}'
+    </code>
+    <h2>Example Using curl:</h2>
+    <code>
+        curl -X POST http://34.147.166.143:3000/decode/ -H "Content-Type: application/json" -d "{\"hexstring\": \"cbb2094e01a70109927fff\"}"
+    </code>
+    <h3>Hexstring examples:</h3>
+    <p><code>cbb409c401990109857fff - {"teplota":"25°C","vlhkost":"40.9%","bateria":"2996mV","ext_val":"24.37°C"} - Test1</code></p>
+    <p><code>cbb2094e01a70109927fff - {"teplota":"23.82°C","vlhkost":"42.3%","bateria":"2994mV","ext_val":"24.5°C"} - Test2</code></p>
+    <p><code>cbe00b1c01a3010a2e7fff - {"teplota":"28.44°C","vlhkost":"41.9%","bateria":"3040mV","ext_val":"26.06°C"} - Test3</code></p>
+    <p><code>cbbdf5c6022e01f54f7fff - {"teplota":"-26.18°C","vlhkost":"55.8%","bateria":"3005mV","ext_val":"-27.37°C"} - Temperature</code></p>
+    <p><code>cd040b55025A0401007fff - {"teplota":"29.01°C","vlhkost":"60.2%","bateria":"3332mV","cable_c":"0","pin_lvl":"High","int_upl":"False"} - Interrupt</code></p>
+    <p><code>cb030b2d027c0501917fff - {"teplota":"28.61°C","vlhkost":"63.6%","bateria":"2819mV","cable_c":"0","ill_str":"401lux"} - Illumination</code></p>
+    <p><code>cb0b0b640272060b067fff - {"teplota":"29.16°C","vlhkost":"62.6%","bateria":"2827mV","cable_c":"0","adc_vol":"2.822v"} - ADC</code></p>
+    <p><code>cbd50b0502e60700067fff - {"teplota":"28.21°C","vlhkost":"74.2%","bateria":"3029mV","cable_c":"0","count2B":"6"} - Counting2B</code></p>
+    <p><code>cbcb09e702140800010005 - {"teplota":"25.35°C","vlhkost":"53.2%","bateria":"3019mV","cable_c":"0","count4B":"65541"} - Counting4B</code></p>
+    <p><code>cdb409f401C90964CBB7F7 - {"teplota":"25.48°C","vlhkost":"45.7%","bateria":"3508mV","timestamp":"1691072503"} - Timestamp</code></p>
+    <p><code>cdb409f401C90c64CBB7F7 - {"teplota":"25.48°C","vlhkost":"45.7%","bateria":"3508mV","ext_val":"Unknown"} - NonDefined</code></p>
+</body>
+</html>
